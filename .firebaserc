@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "instapirate-xd": {
+      "hosting": {
+        "app": [
+          "instapirate-xd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "instapirate-xd"
+  }
+}
