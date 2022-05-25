@@ -1,0 +1,7 @@
+{
+  "name": "instapirate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
