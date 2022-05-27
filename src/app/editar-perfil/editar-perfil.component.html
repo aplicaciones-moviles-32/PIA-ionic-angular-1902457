@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>        
+      <ion-card-title class="ion-text-center">Editar Perfil</ion-card-title>                
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <div class="ion-text-center">
+          <ion-label>Foto de perfil</ion-label><br>
+          <label for="inputFile"><ion-icon size="large" name="person-circle-outline"></ion-icon></label>
+          <input class="ion-hide" type="file" accept=".png,.jpg,.jpeg" (change)="loadImg($event)" id="inputFile">          
+        </div>
+        <div *ngIf="loadedImg" style="text-align: center;">                      
+          <img [src]="loadedImg" style="width: 80%;">                            
+        </div> 
+        <ion-item lines="full">
+          <ion-label position="floating">Nombre de usuario</ion-label>
+          <ion-input type="text" required [(ngModel)]="usuario.nombre"></ion-input>
+        </ion-item>
+        <ion-button *ngIf="usuario.nombre" color="light" expand="block" (click)="changeName()">Cambiar nombre de usuario</ion-button>
+        <ion-button *ngIf="loadedImg" color="light" expand="block" (click)="changeImg()">Cambiar foto de perfil</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

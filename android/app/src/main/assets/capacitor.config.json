@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "instapirate",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,3 +1,16 @@
-<p>
-  tabs works!
-</p>
+<ion-tabs>
+  <ion-tab-bar slot="bottom"  *ngIf="loggedUser|async as user">
+    <ion-tab-button  tab="feed">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+    <ion-tab-button  tab="post">
+      <ion-icon name="camera-outline"></ion-icon>
+      <ion-label>Publicar</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="perfil">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

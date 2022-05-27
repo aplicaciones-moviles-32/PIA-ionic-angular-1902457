@@ -1,0 +1,59 @@
+<ion-content *ngIf="loggedUser|async as user;">
+  <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row class="ion-justify-content-start">        
+          <ion-col size="9">
+            <div class="usuario-card-header">
+              <ion-avatar>
+                <img *ngIf="publicacionImprimir.imgUser" src="{{publicacionImprimir.imgUser}}" width="50px">                                                           
+              </ion-avatar>
+              <ion-label class="label"><strong>@{{publicacionImprimir.userName}}</strong></ion-label> 
+            </div>          
+          </ion-col>                       
+          <ion-col size="3">
+            <ion-button color="light" href="/feed" expand="block"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="publicacionImprimir.imgPublicacion" alt="">          
+    </ion-card-content>      
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div *ngIf="user.uid==publicacionImprimir.id">
+              <ion-label>Descripción (Editable):</ion-label>                          
+            </div>
+            <ion-input [(ngModel)]="publicacionImprimir.caption" placeholder="Ingresar Nueva Caption"></ion-input>                        
+          </ion-col>
+          <ion-col *ngIf="user.uid==publicacionImprimir.id" size="2">
+            <ion-button color="light" expand="block" (click)="editar(publicacionImprimir)"><ion-icon size="large" name="save-outline"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col *ngIf="user.uid==publicacionImprimir.id" size="2">
+            <ion-button color="light" (click)="borrar()" expand="block"><ion-icon size="large" name="trash-outline"></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <!--iconos-->
+          <ion-col size="1">
+            <ion-icon name="heart-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="1" offset="8">
+            <ion-icon name="bookmark-outline"></ion-icon>
+          </ion-col>
+        </ion-row>             
+      </ion-grid>
+    </div>    
+  </ion-card>
+</ion-content>

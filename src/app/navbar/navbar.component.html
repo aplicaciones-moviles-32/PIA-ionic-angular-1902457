@@ -1,0 +1,29 @@
+<ion-toolbar>
+  <ion-title>
+    <div class="container">
+      <ion-row class="ion-justify-content-start">
+        <ion-col size="3">
+          <ion-label>instasam</ion-label>
+        </ion-col>
+        <ion-col size="1" offset="8">
+          <div class="perfil" *ngIf="loggedUser|async as user">
+            <ion-avatar>
+              <ion-img src="{{user.photoURL}}" id="user-header-pic"></ion-img>
+              <ion-popover trigger="user-header-pic">
+                <ng-template>
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>
+                        <ion-button expand="block" color="danger" (click)="cerrarSesion()">Cerrar Sesion</ion-button>
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ng-template>
+              </ion-popover>
+            </ion-avatar>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-title>
+</ion-toolbar>

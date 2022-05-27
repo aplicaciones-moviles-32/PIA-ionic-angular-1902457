@@ -1,0 +1,38 @@
+
+<ion-content mode="ios" *ngIf="loggedUser|async; else elseBlock">
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Publicar</ion-card-title>
+      </div>            
+    </ion-card-header>            
+    <ion-card-content>
+      <ion-row class="ion-justify-content-start">
+        <ion-col size="4">
+          <ion-button fill="translucent" expand="block" (click)="takePhoto()"><ion-icon size="large" name="camera-outline"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col class="ion-align-self-center" size="2" offset="6">
+          <input style="display: none;"  type="file" accept=".png,.jpg,.jpeg"  (change)="loadImg($event)" id="inputFile">
+          <label  for="inputFile"><ion-icon size="large" name="images-outline"></ion-icon></label>
+        </ion-col>
+      </ion-row>     
+      <div *ngIf="loadedImg" style="text-align: center;">                      
+        <img src="{{loadedImg}}" style="width: 80%;">                            
+      </div>      
+      <ion-item lines="full">
+        <ion-label position="floating">Comentario</ion-label>
+        <ion-textarea clearOnEdit="true" required [(ngModel)]="newPost.caption"></ion-textarea>
+      </ion-item>
+      <div class="ion-text-center" *ngIf="loadedImg && newPost.caption">
+        <ion-button expand="block" (click)="post()" color="light">
+          Publicar
+        </ion-button>
+      </div>                                      
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ng-template #elseBlock>
+  <ion-content>
+    <app-login></app-login>
+  </ion-content>
+</ng-template>

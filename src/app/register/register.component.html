@@ -1,0 +1,43 @@
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <h2><strong>Registro</strong></h2>
+      </div>      
+    </ion-card-header>
+    <ion-card-content>
+      <form #register="ngForm" [formGroup]="ionicForm" (ngSubmit)="submitForm()">
+        <ion-item lines="full">
+          <ion-label position="floating">Nombre de usuario</ion-label>
+          <ion-input type="string" formControlName="name" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="email" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Confirmar Contraseña</ion-label>
+          <ion-input type="password" formControlName="password2" required></ion-input>
+        </ion-item>        
+        <div class="ion-text-center">
+          <ion-label>Foto de perfil</ion-label><br>
+          <label for="inputFile"><ion-icon size="large" name="person-circle-outline"></ion-icon></label>
+          <input class="ion-hide" type="file" accept=".png,.jpg,.jpeg" (change)="cargarImagen($event)" id="inputFile">          
+        </div>
+        <div *ngIf="imagenSubida" style="text-align: center;">                      
+          <img [src]="imagenSubida" style="width: 50%;">                            
+        </div>       
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" [disabled]="!register.valid" color="success" expand="block">Registrarse</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-label>¿Ya tienes cuenta? <a href="/feed">Iniciar Sesion</a></ion-label>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

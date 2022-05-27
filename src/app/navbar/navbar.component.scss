@@ -1,0 +1,17 @@
+ion-avatar{
+  width: 20px;
+  height: 20px;
+}
+
+.container ion-row ion-col ion-label {
+  text-align: left;  
+}
+
+.container{
+  align-items: right;
+  width: 100%;
+}
+
+.perfil {
+  flex: 1 0 auto;  
+}

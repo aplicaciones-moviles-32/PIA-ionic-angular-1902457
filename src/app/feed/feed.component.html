@@ -1,0 +1,58 @@
+<ion-content *ngIf="userLogged|async; else elseBlock" mode="ios">
+  <!--historias-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <app-historias></app-historias>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <!-- Publicaciones -->
+  <ion-grid>
+    <ion-row *ngFor="let post of posts; let idPost = index;">
+      <ion-col  size-md="8" offset-md="2">
+        <ion-card >
+          <ion-card-header>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="9">
+                  <div class="usuario-card-header">    
+                    <ion-avatar>
+                      <img *ngIf="post.imgUser" src="{{post.imgUser}}" width="50px">
+                    </ion-avatar>
+                    <ion-label *ngIf="post.userName" class="label">{{post.userName}}</ion-label>                                      
+                  </div>
+                </ion-col>                                
+                <ion-col size="3">
+                  <ion-button fill="translucent" id="trigger-popup--{{post.imgPublicacion}}"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></ion-button>
+                    <ion-popover trigger="trigger-popup--{{post.imgPublicacion}}">
+                      <ng-template>
+                        <app-popover></app-popover>
+                      </ng-template>
+                    </ion-popover>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img  [src]="post.imgPublicacion" [routerLink]="['/publicacion',idPost]"></ion-img>                      
+            <br>
+            {{post.caption}}                                    
+            <div class="opciones">
+              <ion-button fill="translucent"><ion-icon name="heart-outline"></ion-icon></ion-button>
+              <ion-button fill="translucent"><ion-icon name="paper-plane-outline"></ion-icon></ion-button>
+              <ion-button fill="translucent"><ion-icon name="chatbubble-outline"></ion-icon></ion-button>
+              <ion-button fill="translucent"><ion-icon name="bookmark"></ion-icon></ion-button>
+            </div>                      
+          </ion-card-content>      
+        </ion-card>      
+      </ion-col>
+    </ion-row>
+  </ion-grid>    
+</ion-content>
+<ng-template #elseBlock>
+  <ion-content>
+    <app-login></app-login>
+  </ion-content>
+</ng-template>
